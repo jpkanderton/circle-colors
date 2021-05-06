@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --dev",
-    "start": "node server/index.js",
-    "heroku-postbuild": "webpack --config webpack.config.js"
+    "start-all": "npm run build && node server/index.js",
+    "server": "nodemon server/index.js",
+    "build": "webpack --mode production",
+    "heroku-postbuild": "npm run build",
+    "start": "node server/index.js"
     },
   "repository": {
     "type": "git",
