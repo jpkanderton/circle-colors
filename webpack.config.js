@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: './client/src/index.js',
@@ -19,5 +20,17 @@ module.exports = {
        }
      }
    }]
-  }
+  },
+  plugins: [
+    {
+       apply: (compiler) => {
+         compiler.hooks.done.tap('DonePlugin', (stats) => {
+           console.log('Compile is done !')
+           setTimeout(() => {
+             process.exit(0)
+           })
+         });
+       }
+    }
+  ]
 };
